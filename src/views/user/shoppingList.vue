@@ -33,24 +33,15 @@
           v-model="searchObj.shipmentStatus"
           filterable
           clearable
-          placeholder="请选择状态"
-        >
+          placeholder="请选择状态">
           <el-option label="全部" value="0"></el-option>
           <el-option label="可用" value="1"></el-option>
           <el-option label="已下架" value="2"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-button
-        type="primary"
-        size="medium"
-        icon="el-icon-search"
-        @click="getList()"
-        >查询</el-button
-      >
-      <el-button type="primary" size="medium" @click="addShopClick()"
-        >+ 新建商品</el-button
-      >
+      <el-button type="primary" size="medium" icon="el-icon-search" @click="getList()">查询</el-button>
+      <el-button type="primary" size="medium" @click="addShopClick()">+ 新建商品</el-button>
     </el-form>
     <el-table :data="list" stripe style="width: 100%">
       <el-table-column prop="userId" width="100" label="ID" align="center" />
@@ -60,6 +51,7 @@
         label="商品名称"
         align="center"
       />
+
       <el-table-column
         prop="name"
         width="110"
@@ -73,25 +65,28 @@
         label="单价"
         align="center"
       />
+
       <el-table-column
         prop="preferentialAmount"
         width="100"
         label="预览链接"
         align="center"
       />
+
       <el-table-column prop="name" width="100" label="修改人" align="center" />
+
       <el-table-column
         prop="paymentMethod"
         width="100"
         label="状态"
-        align="center"
-      >
+        align="center">
         <template slot-scope="scope">
           <p v-if="scope.row.paymentMethod == 'wx'">微信</p>
           <p v-if="scope.row.paymentMethod == 'h5'">微信</p>
           <p v-if="scope.row.paymentMethod == 'zfb'">支付宝</p>
         </template>
       </el-table-column>
+
       <el-table-column
         prop="payTime"
         :formatter="dateFormat"
@@ -105,21 +100,17 @@
           <el-button
             type="primary"
             size="mini"
-            @click="updateClick(scope.row.id)"
-            >修改</el-button
-          >
+            @click="updateClick(scope.row.id)">修改</el-button>
+
           <el-button
             type="danger"
             size="mini"
-            @click="lowerShelfClick(scope.row.id)"
-            >下架</el-button
-          >
+            @click="lowerShelfClick(scope.row.id)">下架</el-button>
+
           <el-button
             type="danger"
             size="mini"
-            @click="recoveryClick(scope.row.id)"
-            >恢复</el-button
-          >
+            @click="recoveryClick(scope.row.id)">恢复</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -128,9 +119,7 @@
     <el-dialog :visible.sync="lowerShelfDialog" width="30%" center>
       <span>确定要下架该商品吗？</span>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="lowerShelfDialog = false"
-          >取 消</el-button
-        >
+        <el-button type="primary" @click="lowerShelfDialog = false">取 消</el-button>
         <el-button @click="lowerShelfSubmitClick()">确 定</el-button>
       </span>
     </el-dialog>
@@ -140,21 +129,10 @@
       title="新添/修改"
       :visible.sync="shoppingDialog"
       width="50%"
-      center
-    >
+      center>
       <el-form ref="form" :model="form" label-width="120px">
         <el-form-item label="商品名称*：">
-          <el-input
-            v-model="form.name"
-            style="width: 200px"
-            placeholder="特殊高亮文字，选填"
-          ></el-input>
-          +
-          <el-input
-            v-model="form.name"
-            style="width: 300px"
-            placeholder="正式标题，必填，不超过50个字"
-          ></el-input>
+          <el-input v-model="form.name" style="width: 200px" placeholder="特殊高亮文字，选填"></el-input> + <el-input v-model="form.name" style="width: 300px" placeholder="正式标题，必填，不超过50个字"></el-input>
         </el-form-item>
 
         <el-form-item label="上传头图*：">
@@ -162,20 +140,17 @@
             action="https://jsonplaceholder.typicode.com/posts/"
             list-type="picture-card"
             :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove"
-          >
+            :on-remove="handleRemove">
             <i class="el-icon-plus"></i>
           </el-upload>
         </el-form-item>
 
         <el-form-item label="商品单价*：">
-          <el-input v-model="form.name" style="width: 200px"></el-input>
-          单位：元，可精确到小数点后两位
+          <el-input v-model="form.name" style="width: 200px"></el-input>  单位：元，可精确到小数点后两位
         </el-form-item>
 
         <el-form-item label="划线价：">
-          <el-input v-model="form.name" style="width: 200px"></el-input>
-          单位：元，可精确到小数点后两位，选填
+          <el-input v-model="form.name" style="width: 200px"></el-input>  单位：元，可精确到小数点后两位，选填
         </el-form-item>
 
         <el-form-item label="分类标签：">
@@ -196,8 +171,7 @@
             action="https://jsonplaceholder.typicode.com/posts/"
             list-type="picture-card"
             :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove"
-          >
+            :on-remove="handleRemove">
             <i class="el-icon-plus"></i>
           </el-upload>
         </el-form-item>
