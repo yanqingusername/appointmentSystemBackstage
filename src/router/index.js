@@ -106,6 +106,12 @@ export const asyncRoutes = [
         meta: { title: ' 电商商品编辑',  icon: 'table'  },
       },
       {
+        path: 'user/couponpList',
+        name: '电商优惠券',
+        component: () => import('@/views/user/couponpList'),
+        meta: { title: ' 电商优惠券',  icon: 'table'  },
+      },
+      {
         path: 'user/bannerList',
         name: 'banner设置',
         component: () => import('@/views/user/bannerList'),
